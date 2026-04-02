@@ -68,13 +68,20 @@ def validate_flow_json(data: dict) -> dict:
             raise ValueError(f"Invalid flowNodeType: {node['flowNodeType']}")
 
     # Validate edges if present
+    # WATI edges use sourceNodeId / targetNodeId (not source / target)
+    # For InteractiveList rows the sourceNodeId contains "__" (e.g. "main_list-XXXXX__ROWID")
+    # so we compare the base node ID (before "__") against the node_ids set.
     edges = data.get("flowEdges", [])
     node_ids = {n["id"] for n in nodes}
     for edge in edges:
-        if edge.get("source") not in node_ids:
-            raise ValueError(f"Edge source '{edge.get('source')}' not found in nodes")
-        if edge.get("target") not in node_ids:
-            raise ValueError(f"Edge target '{edge.get('target')}' not found in nodes")
+        src = edge.get("sourceNodeId", "")
+        tgt = edge.get("targetNodeId", "")
+        # Strip the row suffix for InteractiveList source edges
+        src_base = src.split("__")[0] if "__" in src else src
+        if src_base and src_base not in node_ids:
+            raise ValueError(f"Edge sourceNodeId '{src}' not found in nodes")
+        if tgt and tgt not in node_ids:
+            raise ValueError(f"Edge targetNodeId '{tgt}' not found in nodes")
 
     return data
 

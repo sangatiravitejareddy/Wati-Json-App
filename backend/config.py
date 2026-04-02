@@ -12,8 +12,8 @@ FIREBASE_SERVICE_ACCOUNT_PATH = os.getenv(
 )
 
 # ── AI (Google Gemini) ────────────────────────────────────────────────
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "AIzaSyDNEaUi78Yv2nDRzMuTSNFo5tlpGcdVBG8")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-lite")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")  # Set in .env — do NOT hardcode
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
 
 # ── Dodo Payments ─────────────────────────────────────────────────────
 DODO_API_KEY = os.getenv("DODO_API_KEY", "rK7RDbbKgJ22k-yO.pgt5WFUfXsyuGKhEx4yybDSrhgBxFBSVyXaiAX2eKHi_85Hm")
