@@ -607,4 +607,4 @@ wati-ai-builder/
 
 ## 📄 License
 
-MIT License — free to use, modify, and deploy.
+Ravi Teja Reddy License — free to use, modify, and deploy.
