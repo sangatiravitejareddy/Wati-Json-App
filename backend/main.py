@@ -8,9 +8,19 @@ from fastapi.responses import JSONResponse
 from slowapi import _rate_limit_exceeded_handler
 from slowapi.errors import RateLimitExceeded
 
-from config import FRONTEND_URL
+from config import FRONTEND_URL, SENTRY_DSN
 from middleware.rate_limit import limiter
 from routers import user_routes, admin_routes, payment_routes, auth_routes
+
+# ── Sentry Integration ────────────────────────────────────────────────
+import sentry_sdk
+
+if SENTRY_DSN:
+    sentry_sdk.init(
+        dsn=SENTRY_DSN,
+        traces_sample_rate=1.0,
+        profiles_sample_rate=1.0,
+    )
 
 # ── Logging ───────────────────────────────────────────────────────────
 logging.basicConfig(level=logging.INFO)

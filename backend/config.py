@@ -10,6 +10,7 @@ load_dotenv()
 FIREBASE_SERVICE_ACCOUNT_PATH = os.getenv(
     "FIREBASE_SERVICE_ACCOUNT_PATH", "firebase-service-account.json"
 )
+FIREBASE_SERVICE_ACCOUNT_JSON = os.getenv("FIREBASE_SERVICE_ACCOUNT_JSON")
 
 # ── AI (Google Gemini) ────────────────────────────────────────────────
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")  # Set in .env — do NOT hardcode
@@ -23,6 +24,7 @@ DODO_API_URL = os.getenv("DODO_API_URL", "https://api.dodopayments.com")
 # ── App ───────────────────────────────────────────────────────────────
 FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+SENTRY_DSN = os.getenv("SENTRY_DSN", "")
 
 # ── Plan Limits ───────────────────────────────────────────────────────
 PLAN_LIMITS = {
