@@ -11,6 +11,14 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://187.127.149.65:8001/api/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
